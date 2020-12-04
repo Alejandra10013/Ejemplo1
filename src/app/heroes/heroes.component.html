@@ -1,0 +1,46 @@
+<h2>My heroes</h2>
+
+<div *ngIf="selectedHero">
+    <h2>{{ selectedHero.name | uppercase}} Details</h2>
+    <div>
+        <span>id: </span> {{ selectedHero.id }}
+    </div>
+</div>
+
+<ul class="heroes">
+    <li [class.selected]="hero === selectedHero" 
+        *ngFor="let hero of heroes" 
+        (click)="onSelect(hero)" >
+
+        <span class="badge">{{ hero.id }}</span> {{ hero.name }}
+        
+    </li>
+</ul>
+
+<!-- ya que no hero no existe 
+    *ngFor especifica que let (crea una nueva variable) haga referencia a 
+    cada item individual de heroes -->
+
+
+
+
+<!-- Aqui se podia ver en la vista el nombre estatico que se le habia
+    asignado antes de crear la lista
+
+    <h2>{{ hero.name }} Details</h2>
+    <div>
+        <span>id: </span> {{ hero.id }}
+    </div>
+
+    <div>
+        <label>nombre: </label> 
+        <input [(ngModel)] = "hero.name" placeholder="name" />
+    </div>
+--> 
+
+<!-- se puede ver el nombre sin concatenaciones complicadas
+    uppercase es para mostrar el texto en mayusculas
+    <span>nombre: </span> {{ hero.nombre | uppercase}}      -->
+
+<!-- ngModel aplica por medio del import FormModules y hace 
+    el input capture y modifique hero.name  -->
